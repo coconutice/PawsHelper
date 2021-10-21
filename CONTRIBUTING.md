@@ -17,7 +17,7 @@ project's repository.
     ```
     Add a remote upstream to track upstream PawsHelper repository.
     ```
-    git remote add upstream https://github.com/icecube/PawsHelper.git
+    git remote add upstream https://github.com/ChujieChen/PawsHelper.git
     ```
     Never push to upstream main
     ```
@@ -43,7 +43,7 @@ project's repository.
     git push -f origin branchName:remoteBranchName
     ```
 7. Create a Pull request on GitHub.
-   Visit your fork at `https://github.com/ChujieChen/PawsHelper` and click
+   Visit your fork at `https://github.com/$user/PawsHelper` and click
    `Compare & Pull Request` button next to your `remoteBranchName` branch.
 
 ### Getting reviewers
@@ -51,5 +51,5 @@ project's repository.
 Once you have opened a Pull Request (PR), reviewers will be assigned to your
 PR and they may provide review comments which you need to address.
 Commit changes made in response to review comments to the same branch on your
-fork. Once a PR is ready to merge, squash any *fix review feedback, typo*
+fork. Once a PR is ready to merge, `Squash and Merge` any *fix review feedback, typo*
 and *merged* sorts of commits.
