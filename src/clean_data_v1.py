@@ -80,4 +80,4 @@ df_in_out = pd.DataFrame(data_in_out, columns=['animal_id', 'name', 'intake_date
                                                'outcome_type',
                                                'outcome_subtype', 'sex_upon_outcome', 'age_upon_outcome'])
 
-df_in_out.to_csv("data/Austin_Animal_Center_Joined.csv", index=False)
+df_in_out.to_csv("../data/Austin_Animal_Center_Joined.csv", index=False)
