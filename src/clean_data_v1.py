@@ -9,7 +9,7 @@ df_outcomes = pd.read_csv("../data/Austin_Animal_Center_Outcomes.csv")
 # Step1:
 # Vertically stack intakes and outcomes (130k rows + 130k rows = 265k rows)
 # Action_type = intake_type U outcome_type (9 types)
-# 其他对于intakes里有而outcomes里没有的column，outcome那列那行为空；反之亦然
+
 # e.g.
 # Animal ID，datetime, action_type, XXX, XXX, XXX\
 # A12345, 08/09/2019, intake,           aa,  aa, aa\
@@ -18,7 +18,8 @@ df_outcomes = pd.read_csv("../data/Austin_Animal_Center_Outcomes.csv")
 # A12345, 10/15/2019, outcome,           aa,  aa, aa\
 # A23456, 05/04/2019, intake ,          aa, aa, aa\
 
-# 上述例子，A12345被两次intake，两次outcome；A23456，只有intake，尚无outcome
+# with above examples, A12345 has two intake records and two outcome records;
+# while A23456 only have intake but no outcome
 
 df_join = df_intakes.append(df_outcomes, sort=False)
 mask = df_join['Intake Type'].isna()
