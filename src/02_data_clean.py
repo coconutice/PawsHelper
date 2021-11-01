@@ -12,22 +12,6 @@ df_clean.loc[df_clean['name'].isnull(), "has_name"] = 0
 df_clean.loc[df_clean['name'] == df_clean['animal_id'], "has_name"] = 0
 df_clean.loc[~df_clean['name'].isnull(), "has_name"] = 1
 
-def convertAge(age):
-  age = str(age).lower()
-  if age != "nan":
-    age_list = age.split()
-    if "year" in age:
-      return int(age_list[0])*365
-    elif "month" in age:
-      return int(age_list[0])*30
-    elif "week" in age:
-      return int(age_list[0])*7
-    elif "day" in age:
-      return int(age_list[0])*1
-    else:
-      return np.nan
-  return np.nan
-
 def getBirthSex(sex_upon_intake):
   sex_upon_intake = str(sex_upon_intake)
   if "Male" in sex_upon_intake:
@@ -59,9 +43,9 @@ def sex_changed(sex_upon_outcome):
   return 0
 
 
-df_clean['age_upon_intake_day'] = df_clean.age_upon_intake.apply(convertAge)
-df_clean['age_upon_outcome_day'] = df_clean.age_upon_outcome.apply(convertAge)
-# 8 rows having negatives
+df_clean['age_upon_intake_day'] = (df_clean['intake_datetime'] - df_clean['date_of_birth']).dt.days
+df_clean['age_upon_outcome_day'] = (df_clean['outcome_datetime'] - df_clean['date_of_birth']).dt.days
+# 168 rows having negatives
 df_clean = df_clean[(df_clean.age_upon_intake_day >=0) | (df_clean.age_upon_intake_day.isnull()) ]
 df_clean = df_clean[(df_clean.age_upon_outcome_day >=0) | (df_clean.age_upon_outcome_day.isnull()) ]
 df_clean['birth_sex'] = df_clean.sex_upon_intake.apply(getBirthSex)
