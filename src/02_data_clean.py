@@ -1,5 +1,5 @@
 import pandas as pd
-import seaborn as sns
+# import seaborn as sns
 import numpy as np
 df_join = pd.read_csv("../data/Austin_Animal_Center_Joined.csv")
 
@@ -51,5 +51,7 @@ df_clean = df_clean[(df_clean.age_upon_outcome_day >=0) | (df_clean.age_upon_out
 df_clean['birth_sex'] = df_clean.sex_upon_intake.apply(getBirthSex)
 df_clean['pure_color'] = df_clean.color.apply(isPureColor)
 df_clean['sex_changed'] = df_clean.sex_upon_outcome.apply(sex_changed)
+df_clean['intake_times'] = 0
+df_clean['intake_times'] = df_clean.sort_values(['animal_id','intake_datetime'], ascending=[True,True]).groupby(['animal_id']).cumcount() + 1
 
 df_clean.to_csv("../data/Austin_Animal_Center_Cleaned.csv", index=False)
