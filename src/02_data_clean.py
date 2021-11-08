@@ -36,7 +36,7 @@ def isPureColor(color):
 
 def sex_changed(sex_upon_outcome):
   sex = str(sex_upon_outcome).lower()
-  if ("splayed" in sex) or ("neutered" in sex):
+  if ("spayed" in sex) or ("neutered" in sex):
     return 1
   elif ("unknown" in sex) or ("nan" in sex):
     return np.nan
